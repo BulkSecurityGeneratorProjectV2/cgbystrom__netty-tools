@@ -32,6 +32,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URI;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -159,7 +160,7 @@ public class HttpTest {
 
 
     private File createTemporaryFile(String content) throws IOException {
-        File f = File.createTempFile("FileServerTest", null);
+        File f = Files.createTempFile("FileServerTest", null).toFile();
         f.deleteOnExit();
         BufferedWriter out = new BufferedWriter(new FileWriter(f));
         out.write(content);
